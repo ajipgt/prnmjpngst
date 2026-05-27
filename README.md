@@ -13,7 +13,7 @@ Preview URL:
 Preview OG Images:
 
 - https://astroflare-og-public.bitcurve.workers.dev/og.png
-- https://astroflare-og-public.bitcurve.workers.dev/hello-world/og.png
+- 
 
 ## OG Image Generation
 
