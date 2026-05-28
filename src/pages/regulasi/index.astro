@@ -27,21 +27,25 @@ const labelKategori: Record<string, string> = {
         <h1 class="text-h1 text-P-heading mb-8">Regulasi</h1>
 
         {Object.entries(grouped).map(([kategori, items]) => (
-                <section class="mb-10">
-                        <h2 class="text-h2 text-P-heading mb-4">{labelKategori[kategori] ?? kategori}</h2>
-                        <ul class="flex flex-col gap-2">
-                                {items.map((entry) => {
-                                        const [regulasiSlug, pasalSlug] = entry.id.split('/')
-                                        return (
-                                                <li>
-                                                        <a href={`/regulasi/${regulasiSlug}/${pasalSlug}`} class="text-P-link hover:underline">
+        <section class="mb-10">
+                <h2 class="text-h2 text-P-heading mb-4">{labelKategori[kategori] ?? kategori}</h2>
+                <ul class="space-y-6">
+                        {items.map((entry) => {
+                                const [regulasiSlug, pasalSlug] = entry.id.split('/')
+                                return (
+                                        <li>
+                                                <a href={`/regulasi/${regulasiSlug}/${pasalSlug}/`} class="group block">
+                                                        <h3 class="text-xl font-semibold transition-[color,text-decoration-thickness] underline underline-offset-2 decoration-current decoration-1 hover:decoration-[1.5px] text-P-link group-hover:text-P-link-hover">
                                                                 Pasal {entry.data.pasal} — {entry.data.judul}
-                                                        </a>
-                                                        <span class="text-P-subtle text-sm ml-2">{entry.data.status}</span>
-                                                </li>
-                                        )
-                                })}
-                        </ul>
-                </section>
-        ))}
+                                                        </h3>
+                                                        {entry.data.status !== 'berlaku' && (
+                                                                <span class="text-sm text-P-subtle">[{entry.data.status}]</span>
+                                                        )}
+                                                </a>
+                                        </li>
+                                )
+                        })}
+                </ul>
+        </section>
+))}
 </Layout>
