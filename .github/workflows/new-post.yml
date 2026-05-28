@@ -1,0 +1,51 @@
+name: New Blog Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Judul post"
+        required: true
+      description:
+        description: "Deskripsi singkat"
+        required: false
+        default: ""
+      draft:
+        description: "Simpan sebagai draft?"
+        type: boolean
+        default: true
+
+jobs:
+  create-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Buat file MDX
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          SLUG=$(echo "${{ github.event.inputs.title }}" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed 's/[[:space:]]/-/g' \
+            | sed 's/[^a-z0-9-]//g' \
+            | sed 's/--*/-/g')
+          FILENAME="src/content/blog/${DATE}-${SLUG}.mdx"
+
+          cat > "$FILENAME" << MDXEOF
+          ---
+          title: "${{ github.event.inputs.title }}"
+          description: "${{ github.event.inputs.description }}"
+          publishedAt: "$DATE"
+          draft: ${{ github.event.inputs.draft }}
+          ---
+
+          Tulis konten di sini.
+          MDXEOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$FILENAME"
+          git commit -m "content: add post - ${SLUG}"
+          git push
