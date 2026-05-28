@@ -57,17 +57,27 @@ const { Content } = await render(entry)
                 )}
 
                 <div class="text-P-subtle text-sm flex flex-col gap-1">
-                        {berlaku_sejak && <span>Berlaku sejak: {berlaku_sejak.toLocaleDateString('id-ID')}</span>}
+                        {berlaku_sejak && (
+                                <span>Berlaku sejak: {berlaku_sejak.toLocaleDateString('id-ID')}</span>
+                        )}
                         {menggantikan.pasal && (
                                 <span>
-                                        Menggantikan: <a href={`/regulasi/${menggantikan.regulasi}/pasal-${menggantikan.pasal}`} class="text-P-link hover:underline">
+                                        Menggantikan:{' '}
+                                        <a
+                                                href={`/regulasi/${menggantikan.regulasi}/pasal-${menggantikan.pasal}`}
+                                                class="text-P-link hover:underline"
+                                        >
                                                 {menggantikan.regulasi} Pasal {menggantikan.pasal}
                                         </a>
                                 </span>
                         )}
                         {diubah_oleh.pasal && (
                                 <span>
-                                        Diubah oleh: <a href={`/regulasi/${diubah_oleh.regulasi}/pasal-${diubah_oleh.pasal}`} class="text-P-link hover:underline">
+                                        Diubah oleh:{' '}
+                                        <a
+                                                href={`/regulasi/${diubah_oleh.regulasi}/pasal-${diubah_oleh.pasal}`}
+                                                class="text-P-link hover:underline"
+                                        >
                                                 {diubah_oleh.regulasi} Pasal {diubah_oleh.pasal}
                                         </a>
                                 </span>
