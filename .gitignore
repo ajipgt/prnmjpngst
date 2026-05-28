@@ -2,8 +2,6 @@
 dist/
 
 # public shared template
-wrangler.jsonc
-worker-configuration.d.ts
 _private
 
 # generated types
@@ -35,3 +33,5 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+
