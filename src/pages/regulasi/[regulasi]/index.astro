@@ -35,20 +35,21 @@ const firstEntry = entries[0]
                 <h1 class="text-h1 text-P-heading">{regulasi.toUpperCase()}</h1>
         </header>
 
-        <ul class="flex flex-col gap-3">
-                {entries.map((entry) => {
-                        const [regulasiSlug, pasalSlug] = entry.id.split('/')
-                        return (
-                                <li class="flex items-baseline gap-3">
-                                        <span class="text-P-subtle text-sm w-16 shrink-0">Pasal {entry.data.pasal}</span>
-                                        <a href={`/regulasi/${regulasiSlug}/${pasalSlug}`} class="text-P-link hover:underline">
-                                                {entry.data.judul}
-                                        </a>
+        <ul class="space-y-6">
+        {entries.map((entry) => {
+                const [regulasiSlug, pasalSlug] = entry.id.split('/')
+                return (
+                        <li>
+                                <a href={`/regulasi/${regulasiSlug}/${pasalSlug}/`} class="group block">
+                                        <h2 class="text-xl font-semibold transition-[color,text-decoration-thickness] underline underline-offset-2 decoration-current decoration-1 hover:decoration-[1.5px] text-P-link group-hover:text-P-link-hover">
+                                                Pasal {entry.data.pasal} — {entry.data.judul}
+                                        </h2>
                                         {entry.data.status !== 'berlaku' && (
-                                                <span class="text-P-subtle text-xs">[{entry.data.status}]</span>
+                                                <span class="text-sm text-P-subtle">[{entry.data.status}]</span>
                                         )}
-                                </li>
-                        )
-                })}
-        </ul>
+                                </a>
+                        </li>
+                )
+        })}
+</ul>
 </Layout>
