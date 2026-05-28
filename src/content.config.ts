@@ -41,6 +41,46 @@ const blogCollection = defineCollection({
 		}),
 })
 
+const regulasiCollection = defineCollection({
+        loader: glob({
+                base: './src/content/regulasi',
+                pattern: '**/*.{md,mdx}',
+        }),
+        schema: () =>
+                z.object({
+                        regulasi: z.string(),
+                        pasal: z.number().int().positive(),
+                        ayat: z.number().int().positive().nullable().default(null),
+                        judul: z.string(),
+                        kategori: z.enum([
+                                'undang-undang',
+                                'peraturan-pemerintah',
+                                'peraturan-menteri',
+                                'keputusan-dirjen',
+                        ]),
+                        tags: z.array(z.string()).default([]),
+                        status: z.enum(['berlaku', 'diubah', 'dicabut']),
+                        menggantikan: z
+                                .object({
+                                        regulasi: z.string().nullable(),
+                                        pasal: z.number().nullable(),
+                                })
+                                .default({ regulasi: null, pasal: null }),
+                        diubah_oleh: z
+                                .object({
+                                        regulasi: z.string().nullable(),
+                                        pasal: z.number().nullable(),
+                                })
+                                .default({ regulasi: null, pasal: null }),
+                        berlaku_sejak: z.coerce.date(),
+                        generated_by: z.string().optional(),
+                        generated_at: z.coerce.date().optional(),
+                        draft: z.boolean().default(true),
+                }),
+})
+
+
 export const collections = {
-	blog: blogCollection,
+        blog: blogCollection,
+        regulasi: regulasiCollection,
 }
