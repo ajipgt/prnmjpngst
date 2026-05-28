@@ -1,0 +1,79 @@
+---
+import { type CollectionEntry, render, getCollection } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+
+type Props = { entry: CollectionEntry<'regulasi'> }
+
+export async function getStaticPaths() {
+        const entries = await getCollection('regulasi', ({ data }) => !data.draft)
+
+        return entries.map((entry) => {
+                const [regulasi, pasal] = entry.id.split('/')
+                return {
+                        params: { regulasi, pasal },
+                        props: { entry },
+                }
+        })
+}
+
+const { entry } = Astro.props
+const { regulasi: regulasiParam } = Astro.params
+const { judul, regulasi, pasal, status, tags, kategori, berlaku_sejak, menggantikan, diubah_oleh } = entry.data
+
+const { Content } = await render(entry)
+---
+
+<Layout
+        variant="post"
+        meta={{
+                title: `Pasal ${pasal} — ${judul}`,
+                description: `${regulasi.toUpperCase()} Pasal ${pasal}: ${judul}`,
+        }}
+>
+        <header class="flex flex-col gap-3 not-prose mb-10">
+                <nav class="text-P-subtle text-sm">
+                        <a href="/regulasi" class="hover:underline">Regulasi</a>
+                        {' / '}
+                        <a href={`/regulasi/${regulasiParam}`} class="hover:underline">{regulasi.toUpperCase()}</a>
+                </nav>
+
+                <div class="flex items-center gap-2">
+                        <span class="text-P-subtle text-sm uppercase tracking-wide">{kategori}</span>
+                        {status !== 'berlaku' && (
+                                <span class="text-xs px-2 py-0.5 rounded bg-P-subtle/20 text-P-subtle">{status}</span>
+                        )}
+                </div>
+
+                <h1 class="text-h1 text-P-heading">Pasal {pasal} — {judul}</h1>
+
+                {tags.length > 0 && (
+                        <div class="flex gap-2 flex-wrap">
+                                {tags.map((tag) => (
+                                        <span class="text-xs px-2 py-0.5 rounded-full border border-P-subtle/30 text-P-subtle">
+                                                {tag}
+                                        </span>
+                                ))}
+                        </div>
+                )}
+
+                <div class="text-P-subtle text-sm flex flex-col gap-1">
+                        {berlaku_sejak && <span>Berlaku sejak: {berlaku_sejak.toLocaleDateString('id-ID')}</span>}
+                        {menggantikan.pasal && (
+                                <span>
+                                        Menggantikan: <a href={`/regulasi/${menggantikan.regulasi}/pasal-${menggantikan.pasal}`} class="text-P-link hover:underline">
+                                                {menggantikan.regulasi} Pasal {menggantikan.pasal}
+                                        </a>
+                                </span>
+                        )}
+                        {diubah_oleh.pasal && (
+                                <span>
+                                        Diubah oleh: <a href={`/regulasi/${diubah_oleh.regulasi}/pasal-${diubah_oleh.pasal}`} class="text-P-link hover:underline">
+                                                {diubah_oleh.regulasi} Pasal {diubah_oleh.pasal}
+                                        </a>
+                                </span>
+                        )}
+                </div>
+        </header>
+
+        <Content />
+</Layout>
