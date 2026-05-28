@@ -3,7 +3,11 @@
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"send_metrics": false,
 	"compatibility_date": "2026-04-17",
-	"compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env", "global_fetch_strictly_public"],
+	"compatibility_flags": [
+		"nodejs_compat",
+		"nodejs_compat_populate_process_env",
+		"global_fetch_strictly_public"
+	],
 	"upload_source_maps": true,
 	"assets": {
 		"directory": "./dist",

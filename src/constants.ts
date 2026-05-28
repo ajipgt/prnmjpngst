@@ -12,10 +12,10 @@ export const LOCALES = i18n?.locales || [DEFAULT_LOCALE]
 export type DateFormat = 'iso' | 'short'
 export const DEFAULT_DATE_FORMAT: DateFormat = 'iso'
 
-export const META_TITLE = 'AstroFlareOG'
-export const META_DESCRIPTION = 'Open Source Astro theme for Cloudflare Workers by @firxworx'
+export const META_TITLE = 'prnmjpngst'
+export const META_DESCRIPTION = 'Personal Note'
 
-export const SITE_BRAND_NAME = 'AstroFlareOG'
+export const SITE_BRAND_NAME = 'prnmjpngst'
 
 export const LAYOUT_NAV_LINKS = [
 	{ label: 'Blog', href: '/blog/' },
@@ -25,7 +25,8 @@ export const LAYOUT_NAV_LINKS = [
 /**
  * Short tagline for site OG image (default `/og.png` image off the root pathname).
  */
-export const OG_TAGLINE = 'Open Source Theme for Astro + Cloudflare'
+
+export const OG_TAGLINE = "My second brain, but messier"
 
 export const DEFAULT_OG_WIDTH_PX = 1200
 export const DEFAULT_OG_HEIGHT_PX = 630
@@ -46,4 +47,4 @@ export const OG_TWITTER_SITE_HANDLE: string | undefined = OG_TWITTER_CREATOR_HAN
  * Repository URL for the project.
  * Related to AstroFlareOG starter; may be replaced or removed for your own project.
  */
-export const PROJECT_REPO_URL = 'https://github.com/firxworx/astroflare-og-public'
+export const PROJECT_REPO_URL = 'https://github.com/ajipgt/prnmjpngst'
