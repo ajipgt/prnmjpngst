@@ -1,4 +1,4 @@
-@theme inline {
+@theme {
 	/* global layout */
 	--color-P-bg: var(--color-neutral-50);
 	--color-P-fg: var(--color-neutral-800);
