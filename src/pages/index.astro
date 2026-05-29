@@ -2,43 +2,36 @@
 import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
 import FormattedDate from '@/components/FormattedDate.astro'
-import { SITE_BRAND_NAME } from '@/constants'
 import { cn } from '@/lib/style'
 
 const currentDate = new Date()
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft && data.publishedAt <= currentDate))
         .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
-        .slice(0, 5)
+
+const regulasi = (await getCollection('regulasi', ({ data }) => !data.draft))
+        .sort((a, b) => b.data.berlaku_sejak.valueOf() - a.data.berlaku_sejak.valueOf())
+
+const linkClass = cn(
+        'text-xl font-semibold transition-[color,text-decoration-thickness]',
+        'underline underline-offset-2 decoration-current decoration-1 hover:decoration-[1.5px]',
+        'text-P-link group-hover:text-P-link-hover',
+)
 ---
 
-<Layout
-        meta={{
-                type: 'page',
-                title: SITE_BRAND_NAME,
-                description: 'My second brain, but messier',
-        }}
->
-        <section>
-                <header class="mb-12">
-                        <h1 class="text-h1 text-P-heading text-balance mb-4">{SITE_BRAND_NAME}</h1>
-                        <p class="text-lead text-P-lead">My second brain, but messier</p>
-                </header>
+<Layout meta={{ type: 'page', title: 'Home', description: 'Catatan pribadi' }}>
+        <div class="flex flex-col gap-16">
 
-                {posts.length > 0 && (
-                        <section>
-                                <h2 class="text-h2 text-P-heading mb-6">Tulisan Terbaru</h2>
+                <section>
+                        <h2 class="text-h2 text-P-heading mb-6">Post</h2>
+                        {posts.length === 0 ? (
+                                <p class="text-P-subtle">Belum ada post.</p>
+                        ) : (
                                 <ul class="space-y-6">
                                         {posts.map((post) => (
                                                 <li>
                                                         <a href={`/blog/${post.id}/`} class="group block">
-                                                                <h3 class={cn(
-                                                                        'text-xl font-semibold transition-[color,text-decoration-thickness]',
-                                                                        'underline underline-offset-2 decoration-current decoration-1 hover:decoration-[1.5px]',
-                                                                        'text-P-link group-hover:text-P-link-hover',
-                                                                )}>
-                                                                        {post.data.title}
-                                                                </h3>
+                                                                <h3 class={linkClass}>{post.data.title}</h3>
                                                                 <FormattedDate class="text-sm text-P-subtle" date={post.data.publishedAt} />
                                                                 {post.data.description && (
                                                                         <p class="mt-1 text-P-lead">{post.data.description}</p>
@@ -47,10 +40,31 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft && data.pub
                                                 </li>
                                         ))}
                                 </ul>
-                                <a href="/blog/" class="inline-block mt-8 text-P-link hover:underline text-sm">
-                                        Semua tulisan →
-                                </a>
-                        </section>
-                )}
-        </section>
+                        )}
+                </section>
+
+                <section>
+                        <h2 class="text-h2 text-P-heading mb-6">Regulasi</h2>
+                        {regulasi.length === 0 ? (
+                                <p class="text-P-subtle">Belum ada konten regulasi.</p>
+                        ) : (
+                                <ul class="space-y-6">
+                                        {regulasi.map((entry) => {
+                                                const [regulasiSlug, pasalSlug] = entry.id.split('/')
+                                                return (
+                                                        <li>
+                                                                <a href={`/regulasi/${regulasiSlug}/${pasalSlug}/`} class="group block">
+                                                                        <h3 class={linkClass}>
+                                                                                {entry.data.regulasi.toUpperCase()} Pasal {entry.data.pasal} — {entry.data.judul}
+                                                                        </h3>
+                                                                        <span class="text-sm text-P-subtle">{entry.data.kategori}</span>
+                                                                </a>
+                                                        </li>
+                                                )
+                                        })}
+                                </ul>
+                        )}
+                </section>
+
+        </div>
 </Layout>
