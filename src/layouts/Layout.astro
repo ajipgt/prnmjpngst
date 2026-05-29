@@ -9,6 +9,7 @@ import type { SeoMeta, SeoMetaType } from '@/seo.types'
 import HeadSeoMeta from '@/components/HeadSeoMeta.astro'
 import { ensureTrailingSlash } from '@/lib/slashes'
 import Logo from '@/components/Logo.astro'
+import ThemeToggle from '@/components/ThemeToggle.astro'
 
 type Props = {
 	variant?: 'page' | 'post' | 'layout' | 'full'
@@ -92,6 +93,7 @@ const containerPaddingClassName = cn('px-4 py-8 sm:py-12 md:py-16')
 						))
 					}
 				</ul>
+     <ThemeToggle />
 			</nav>
 		</header>
 		<main id="main" class={cn('flex-1 text-lg', mainClassName)}>
