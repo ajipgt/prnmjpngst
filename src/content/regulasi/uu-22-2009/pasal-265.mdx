@@ -1,0 +1,72 @@
+---
+regulasi: "uu-22-2009"
+pasal: 265
+ayat: null
+judul: "Wewenang Pemeriksaan Kendaraan di Jalan"
+kategori: "undang-undang"
+tags:
+  - "pemeriksaan-kendaraan"
+  - "wewenang-petugas"
+  - "bukti-lulus-uji"
+  - "razia-jalan"
+status: "berlaku"
+menggantikan:
+  regulasi: null
+  pasal: null
+diubah_oleh:
+  regulasi: null
+  pasal: null
+berlaku_sejak: "2009-06-22"
+generated_by: "gemini"
+generated_at: "2026-05-29"
+draft: false
+---
+
+## Bunyi Pasal
+
+> (1) Pemeriksaan Kendaraan Bermotor di Jalan meliputi pemeriksaan:
+> a. Surat Tanda Nomor Kendaraan Bermotor, Surat Tanda Coba Kendaraan Bermotor, Surat Izin Mengemudi, tanda bukti lulus uji berkala, dan/atau tanda bukti lain yang sah;
+> b. fisik Kendaraan Bermotor;
+> c. daya angkut dan/atau cara pengangkutan barang; dan/atau
+> d. izin penyelenggaraan angkutan.
+> 
+> (2) Pemeriksaan Kendaraan Bermotor di jalan sebagaimana dimaksud pada ayat (1) dilakukan oleh:
+> a. Petugas Kepolisian Negara Republik Indonesia; dan
+> b. Penyidik Pegawai Negeri Sipil di bidang Lalu Lintas dan Angkutan Jalan.
+> 
+> (3) Petugas Kepolisian Negara Republik Indonesia dan Penyidik Pegawai Negeri Sipil di bidang Lalu Lintas dan Angkutan Jalan dalam melaksanakan pemeriksaan Kendaraan Bermotor sebagaimana dimaksud pada ayat (1) wajib dilengkapi dengan surat perintah tugas.
+> 
+> (4) Ketentuan lebih lanjut mengenai tata cara pemeriksaan Kendaraan Bermotor di Jalan dan penindakan pelanggaran Lalu Lintas dan Angkutan Jalan diatur dengan Peraturan Pemerintah.
+
+## Terjemahan Logis
+
+### 1. Objek Pemeriksaan Operasional Jalan raya
+[pemeriksaanKendaraanDiJalan] → memeriksa(dokumenSah) ∧ memeriksa(fisikKendaraan) ∧ memeriksa(dayaAngkutDanCaraMuat) ∧ memeriksa(izinAngkutan)
+
+### 2. Validasi Dokumen Wajib Uji Berkala
+[memeriksa(dokumenSah)] → wajibCek(STNK ∨ STCK ∨ SIM ∧ tandaBuktiLulusUjiBerkala)
+
+### 3. Subjek Hukum Pelaksana (Aparat Berwenang)
+[pelaksanaPemeriksaanDiJalan] → PetugasPolri ∨ PPNS_LLAJ
+
+### 4. Prasyarat Formal Legalitas Petugas
+[PetugasPolri ∨ PPNS_LLAJ] ∧ [melaksanakanPemeriksaan] → wajib(dilengkapiSuratPerintahTugas)
+
+note:
+  PPNS LLAJ                  = Penyidik Pegawai Negeri Sipil Dinas Perhubungan yang memiliki kualifikasi dan wewenang khusus di bidang lalu lintas jalan.
+  tanda bukti lulus uji berkala = Kartu uji/BLU-e beserta stiker hologram yang membuktikan kendaraan lolos uji berkala di UPT PKB.
+  cara pengangkutan barang   = Metode penataan muatan guna mencegah terjadinya pelanggaran dimensi fisik maupun kelebihan beban (*overloading*).
+
+## Konteks
+
+Pasal ini mengatur hilir dari penegakan hukum kelaikan kendaraan, yaitu pengawasan langsung di jalan raya. Bagi UPT PKB, pasal ini sangat penting karena memberikan wewenang legal bagi PPNS Dinas Perhubungan (bersama Polri) untuk memeriksa keabsahan tanda bukti lulus uji berkala (BLU-e) yang diterbitkan oleh balai uji, sekaligus menindak fisik kendaraan yang terindikasi ODOL (*Over Dimension Over Load*) di lapangan.
+
+## Relasi
+
+- **Diatur lebih lanjut oleh:** PP No. 80 Tahun 2012 tentang Tata Cara Pemeriksaan Kendaraan Bermotor di Jalan dan Penindakan Pelanggaran Lalu Lintas dan Angkutan Jalan
+- **Menggantikan:** —
+- **Dicabut oleh:** —
+
+## Catatan Lapangan
+
+> *(diisi manual)*
