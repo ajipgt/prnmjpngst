@@ -58,12 +58,21 @@ draft: true
 
 ## Terjemahan Logis
 
-RULE: {nama rule singkat}
-  CONDITION: {kondisi berlaku}
-  ACTION:    {kewajiban atau tindakan}
-  EFFECT:    {akibat atau hasil}
-  EXCEPTION: {pengecualian, tulis null jika tidak ada}
-  REF:       {nama regulasi} Pasal {n}
+[kondisi] → EFEK
+[EFEK] → konsekuensi lanjutan (jika ada)
+
+note:
+  istilah = definisi singkat
+  ...
+
+contoh 
+[jumlahTelat ≥ 2 × masaBerlaku] → HAPUS
+[HAPUS] → daftarUlang + SRUT wajib
+
+note:
+  masaBerlaku = 6 bulan
+  SRUT        = Sertifikat Registrasi Uji Tipe
+  daftarUlang = diperlakukan seperti kendaraan baru
 
 ## Konteks
 
