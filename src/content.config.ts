@@ -82,5 +82,4 @@ const regulasiCollection = defineCollection({
 
 export const collections = {
         blog: blogCollection,
-        regulasi: regulasiCollection,
 }
