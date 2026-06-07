@@ -19,7 +19,7 @@ export const SITE_BRAND_NAME = 'prnmjpngst'
 
 export const LAYOUT_NAV_LINKS = [
         { label: 'Blog', href: '/blog/' },
-        { label: 'Regulasi', href: '/regulasi/' },
+        { label: 'AI', href: '/kir-assistant/' },
 ]
 
 /**
