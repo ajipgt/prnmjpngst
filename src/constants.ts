@@ -18,8 +18,7 @@ export const META_DESCRIPTION = 'Personal Note'
 export const SITE_BRAND_NAME = 'prnmjpngst'
 
 export const LAYOUT_NAV_LINKS = [
-        { label: 'Blog', href: '/blog/' },
-        { label: 'AI', href: '/kir-assistant/' },
+        { label: 'PKB Academy', href: '/pkb/' },
 ]
 
 /**
@@ -45,6 +44,41 @@ export const OG_TWITTER_SITE_HANDLE: string | undefined = OG_TWITTER_CREATOR_HAN
 
 /**
  * Repository URL for the project.
- * Related to AstroFlareOG starter; may be replaced or removed for your own project.
  */
 export const PROJECT_REPO_URL = 'https://github.com/ajipgt/prnmjpngst'
+
+/**
+ * PKB Academy course configuration for learning platform integration.
+ */
+export const PKB_COURSE_TITLE = 'PKB Academy'
+export const PKB_COURSE_SLUG = 'pkb-dasar'
+export const PKB_QUIZ_PASS_SCORE = 70
+export const PKB_FINAL_PASS_SCORE = 70
+export const PKB_FINAL_PART_MIN_SCORE = 60
+
+/**
+ * PKB Academy scoring and assessment configuration.
+ */
+export const PKB_QUIZ_ITEM_COUNT = 5
+export const PKB_QUIZ_ITEM_MIN = 3
+export const PKB_PRACTICE_ITEM_COUNT = 10
+export const PKB_PRACTICE_ITEM_MIN = 8
+export const PKB_FINAL_A_ITEM_COUNT = 35
+export const PKB_FINAL_A_ITEM_MIN = 30
+export const PKB_FINAL_B_ITEM_COUNT = 6
+export const PKB_FINAL_B_ITEM_MIN = 5
+
+/**
+ * PKB Academy attempt limits and timing.
+ */
+export const PKB_QUIZ_MAX_ATTEMPTS = 2
+export const PKB_PRACTICE_MAX_ATTEMPTS = 3
+export const PKB_FINAL_MAX_ATTEMPTS = 2
+export const PKB_FINAL_ATTEMPT_HOURS = 24
+
+/**
+ * PKB Academy component weights for progress calculation.
+ */
+export const PKB_MODULE_PROGRESS_LESSON_WEIGHT = 0.7
+export const PKB_MODULE_PROGRESS_QUIZ_WEIGHT = 0.2
+export const PKB_MODULE_PROGRESS_PRACTICE_WEIGHT = 0.1

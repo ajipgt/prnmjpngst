@@ -1,69 +1,61 @@
 ---
-import { getCollection } from 'astro:content'
 import Layout from '@/layouts/Layout.astro'
-import FormattedDate from '@/components/FormattedDate.astro'
-import { cn } from '@/lib/style'
-
-const currentDate = new Date()
-
-const posts = (await getCollection('blog', ({ data }) => !data.draft && data.publishedAt <= currentDate))
-        .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
-
-const regulasi = (await getCollection('regulasi', ({ data }) => !data.draft))
-        .sort((a, b) => b.data.berlaku_sejak.valueOf() - a.data.berlaku_sejak.valueOf())
-
-const linkClass = cn(
-        'text-xl font-semibold transition-[color,text-decoration-thickness]',
-        'underline underline-offset-2 decoration-current decoration-1 hover:decoration-[1.5px]',
-        'text-P-link group-hover:text-P-link-hover',
-)
+import { PKB_MODULE_TITLES } from '@pkba/domain'
 ---
 
 <Layout meta={{ type: 'page', title: 'Home', description: 'Catatan pribadi' }}>
         <div class="flex flex-col gap-16">
 
                 <section>
-                        <h2 class="text-h2 text-P-heading mb-6">Post</h2>
-                        {posts.length === 0 ? (
-                                <p class="text-P-subtle">Belum ada post.</p>
-                        ) : (
-                                <ul class="space-y-6">
-                                        {posts.map((post) => (
-                                                <li>
-                                                        <a href={`/blog/${post.id}/`} class="group block">
-                                                                <h3 class={linkClass}>{post.data.title}</h3>
-                                                                <FormattedDate class="text-sm text-P-subtle" date={post.data.publishedAt} />
-                                                                {post.data.description && (
-                                                                        <p class="mt-1 text-P-lead">{post.data.description}</p>
-                                                                )}
-                                                        </a>
-                                                </li>
-                                        ))}
-                                </ul>
-                        )}
+                        <h1 class="text-h1 text-P-heading mb-6">prnmjpngst</h1>
+                        <p class="text-P-lead">My second brain, but messier.</p>
                 </section>
 
                 <section>
-                        <h2 class="text-h2 text-P-heading mb-6">Regulasi</h2>
-                        {regulasi.length === 0 ? (
-                                <p class="text-P-subtle">Belum ada konten regulasi.</p>
-                        ) : (
-                                <ul class="space-y-6">
-                                        {regulasi.map((entry) => {
-                                                const [regulasiSlug, pasalSlug] = entry.id.split('/')
-                                                return (
-                                                        <li>
-                                                                <a href={`/regulasi/${regulasiSlug}/${pasalSlug}/`} class="group block">
-                                                                        <h3 class={linkClass}>
-                                                                                {entry.data.regulasi.toUpperCase()} Pasal {entry.data.pasal} — {entry.data.judul}
-                                                                        </h3>
-                                                                        <span class="text-sm text-P-subtle">{entry.data.kategori}</span>
-                                                                </a>
-                                                        </li>
-                                                )
-                                        })}
-                                </ul>
-                        )}
+                        <h2 class="text-h2 text-P-heading mb-6">PKB Academy - Penguji Kendaraan Bermotor</h2>
+                        <p class="text-P-subtle mb-4">
+                                Platform pembelajaran bertahap untuk persiapan Diklat PKB Dasar dengan penilaian otomatis.
+                                Assessment threshold: 70% minimum skor.
+                        </p>
+                        <div class="space-y-4">
+                                <div>
+                                        <h3 class="text-lg font-semibold text-P-heading">Modul Pembelajaran</h3>
+                                        <p class="text-P-fg">12 modul bertahap:</p>
+                                        <ol class="list-decimal space-y-1 pl-5 text-sm text-P-subtle">
+                                                {PKB_MODULE_TITLES.map((title) => (
+                                                        <li key={title}>{title}</li>
+                                                ))}
+                                        </ol>
+                                </div>
+                                <div class="pt-4">
+                                        <h3 class="text-lg font-semibold text-P-heading">Evaluasi Kompetensi</h3>
+                                        <div class="grid md:grid-cols-3 gap-4">
+                                                <div class="rounded-lg border bg-P-card p-4">
+                                                        <h4 class="text-sm font-medium text-P-heading mb-2">Kuis</h4>
+                                                        <p class="text-2xl font-bold text-P-link">5 soal</p>
+                                                        <p class="text-xs text-P-subtle">Skor minimal: 70%</p>
+                                                </div>
+                                                <div class="rounded-lg border bg-P-card p-4">
+                                                        <h4 class="text-sm font-medium text-P-heading mb-2">Latihan</h4>
+                                                        <p class="text-2xl font-bold text-P-link">10 skenario</p>
+                                                        <p class="text-xs text-P-subtle">Skor minimal: 70%</p>
+                                                </div>
+                                                <div class="rounded-lg border bg-P-card p-4">
+                                                        <h4 class="text-sm font-medium text-P-heading mb-2">Final</h4>
+                                                        <p class="text-2xl font-bold text-P-link">Bagian A + B</p>
+                                                        <p class="text-xs text-P-subtle">Total: 70% minimum</p>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="mt-6">
+                                <a href="/pkb/" class="inline-flex items-center gap-1 px-4 py-2 bg-P-link text-white rounded-md hover:bg-P-link-hover transition-colors">
+                                        Mulai Pembelajaran PKB
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                        </svg>
+                                </a>
+                        </div>
                 </section>
 
         </div>
