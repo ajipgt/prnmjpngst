@@ -82,3 +82,22 @@ export const PKB_FINAL_ATTEMPT_HOURS = 24
 export const PKB_MODULE_PROGRESS_LESSON_WEIGHT = 0.7
 export const PKB_MODULE_PROGRESS_QUIZ_WEIGHT = 0.2
 export const PKB_MODULE_PROGRESS_PRACTICE_WEIGHT = 0.1
+
+/**
+ * PKB Academy curriculum titles for Motor Vehicle Tester (PKB) Dasar certification.
+ * This data is now locally embedded in the project for better maintainability and isolation.
+ */
+export const PKB_MODULE_TITLES = [
+        "Dasar Hukum & Kelembagaan PKB",
+        "Etika, K3 & Profesionalisme Penguji",
+        "Administrasi & Tata Laksana Pengujian",
+        "Identitas & Klasifikasi Kendaraan",
+        "Pemeriksaan Visual & Dimensi",
+        "Sistem Penerangan & Kelistrikan Sinyal",
+        "Sistem Rem",
+        "Sistem Kemudi, Roda & Ban",
+        "Emisi Gas Buang & Kebisingan",
+        "Peralatan Uji & Kalibrasi (konsep)",
+        "Prosedur Uji Berkala Ujung ke Ujung",
+        "Studi Kasus Keputusan Penguji",
+] as const;
