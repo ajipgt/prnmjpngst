@@ -1,10 +1,71 @@
-# AstroFlareOG - Astro Starter Theme
+# prnmjpngst - Personal Homepage
 
-Astro v6 starter theme for Cloudflare Workers that supports dynamic OG image generation using `satori` and `resvg`.
+Clean, minimalist personal website showcasing: "prnmjpngst" and the tagline "My second brain, but messier."
 
-Featuring TailwindCSS with a custom `.prose` utility to style rich-text content, an example blog as an Astro [content collection](https://docs.astro.build/en/guides/content-collections/), and a minimal responsive layout that's ready to customize.
+## Features
 
-The AstroFlareOG starter was created by Kevin Firko ([`@firxworx`](https://github.com/firxworx)) of [Bitcurve Systems](https://bitcurve.com) and released to the community under MIT License.
+- **Minimal homepage** with clean typography
+- **OG image generation** via Cloudflare Workers (site: `og.png`)
+- **Lightweight design** using TailwindCSS
+- **Modular structure** ready for easy customization
+
+## Project State
+
+This repository has been streamlined:
+
+- ✅ **Personal homepage** showcasing prnmjpngst with tagline
+- ✅ **OG image endpoint** (`/og.png`) for social sharing
+- ✅ **Assets and fonts** (placeholder images, Atkinson fonts)
+- ✅ **Modern Astro** v6 with Cloudflare Workers adapter
+
+### Removed Content
+
+The following have been removed:
+- Legacy A.I. chat assistant
+- Blog posts and content collection
+- Regulatory content
+- Navigation menus for blog and A.I.
+
+### Available Zones for Future Development
+
+The cleaned project now provides a **blank canvas** for:
+
+- Adding personal content sections
+- Integrating new features
+- Adding AI-powered tools
+- Creating content management systems
+- Building additional learning modules
+
+## Commands
+
+Run from project root:
+
+| Command                   | Action                 |
+|---------------------------|-----------------------|
+| `pnpm install`             | Install dependencies   |
+| `pnpm dev`                 | Start local dev server |
+| `pnpm build`               | Build production site  |
+| `pnpm check`               | Lint & format code     |
+| `pnpm typecheck`           | Type checking          |
+
+## Visit Your Site
+
+Preview your homepage at:
+
+- https://prnmjpngst.pw/
+- OG image: https://prnmjpngst.pw/og.png
+
+## Technical Stack
+
+- **Framework**: Astro v6
+- **Adapter**: Cloudflare Workers
+- **Styling**: TailwindCSS 4
+- **Code Quality**: Biome linting & Prettier formatting
+- **Fonts**: Astro Fonts API (Atkinson Hyperlegible)
+
+## Notes
+
+This is now a **foundation project** ready for building personalized web applications with a focus on clean design and Cloudflare Workers integration.
 
 Preview URL:
 
